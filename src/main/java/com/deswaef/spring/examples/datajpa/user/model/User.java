@@ -11,9 +11,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user") 
 public class User {
+	
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id")
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     
     @Basic

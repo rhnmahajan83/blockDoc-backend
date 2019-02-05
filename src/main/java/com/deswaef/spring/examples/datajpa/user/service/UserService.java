@@ -25,12 +25,20 @@ public class UserService implements UserInterface{
     public String validateUser(String email, String password) {
     	String responseMessage = null;	
     	User user = userRepository.findByEmailAndPassword(email, password);
-    	if(user.getEmail() == email && user.getPassword() == password) {
+    	String userEmail = user.getEmail().trim();
+    	String userPassword = user.getPassword().trim();
+    	
+//    	String us = "rhnmahajan83@gmail.com";
+//    	String ps = "blockdock123$";
+//    	String dbn = "rhnmahajan83@gmail.com";
+//    	String dbp = "blockdock123$";
+    	
+    	if(userEmail.equals(email) && userPassword.equals(password)) {
     		responseMessage = user.getName();
-    	}else
-    	{
+    	}else {
     		responseMessage = "0";
     	}
+    	
     	return responseMessage;
     }
 
