@@ -1,8 +1,9 @@
-package com.deswaef.spring.examples.datajpa.user.service;
+package com.blockdock.datajpa.user.service;
 
 import com.blockdock.Interface.UserInterface;
-import com.deswaef.spring.examples.datajpa.user.model.User;
-import com.deswaef.spring.examples.datajpa.user.repository.UserRepository;
+import com.blockdock.datajpa.user.model.User;
+import com.blockdock.datajpa.user.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,16 +23,12 @@ public class UserService implements UserInterface{
         return userRepository.findAll();
     }
 
+
     public String validateUser(String email, String password) {
     	String responseMessage = null;	
     	User user = userRepository.findByEmailAndPassword(email, password);
     	String userEmail = user.getEmail().trim();
     	String userPassword = user.getPassword().trim();
-    	
-//    	String us = "rhnmahajan83@gmail.com";
-//    	String ps = "blockdock123$";
-//    	String dbn = "rhnmahajan83@gmail.com";
-//    	String dbp = "blockdock123$";
     	
     	if(userEmail.equals(email) && userPassword.equals(password)) {
     		responseMessage = user.getName();
