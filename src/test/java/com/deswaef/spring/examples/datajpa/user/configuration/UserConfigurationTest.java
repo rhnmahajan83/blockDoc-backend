@@ -1,8 +1,9 @@
 package com.deswaef.spring.examples.datajpa.user.configuration;
 
-import com.deswaef.spring.examples.datajpa.UserConfiguration;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.blockdock.datajpa.UserConfiguration;
 
 /**
  * User: Quinten

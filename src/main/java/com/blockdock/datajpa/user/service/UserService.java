@@ -18,36 +18,42 @@ public class UserService implements UserInterface{
     @Autowired
     private UserRepository userRepository;
 
-    @Transactional(readOnly = true)
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
 
 
-    public String validateUser(String email, String password) {
-    	String responseMessage = null;	
+    public Boolean validateUser(String email, String password) {
     	User user = userRepository.findByEmailAndPassword(email, password);
-    	String userEmail = user.getEmail().trim();
-    	String userPassword = user.getPassword().trim();
-    	
-    	if(userEmail.equals(email) && userPassword.equals(password)) {
-    		responseMessage = user.getName();
-    	}else {
-    		responseMessage = "0";
+    	if(user != null) {
+        	String userEmail = user.getEmail().trim();
+        	String userPassword = user.getPassword().trim();
+    		if(userEmail.equals(email) && userPassword.equals(password)) {
+        		return true;
+        	}else {
+        		return false;
+        	}
+    	} else {
+			return false;
     	}
-    	
-    	return responseMessage;
-    }
+	}
+
+    @Override
+	public Boolean registerUser(User user) {
+		if(userRepository.save(user) != null) {
+			return true;
+		}
+		return false;
+	}
+	
+	public Boolean getUserByEmail(String email) {	
+		if(userRepository.findByEmail(email) != null) {
+			return true;
+		}
+		return false;
+	}
 
 	@Override
-	public String registerUser(User user) {
-		String responseMessage = null;
-		
-		userRepository.save(user);
-		
-		responseMessage = "1";
-		return responseMessage;
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-    
-    
+
 }
