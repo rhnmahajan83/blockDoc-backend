@@ -1,8 +1,9 @@
-package com.deswaef.spring.examples.datajpa.user.repository;
+package com.blockdock.datajpa.user.repository;
 
-import com.deswaef.spring.examples.datajpa.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
+
+import com.blockdock.datajpa.user.model.User;
 
 
 public interface UserRepository extends JpaRepository<User, Long>{

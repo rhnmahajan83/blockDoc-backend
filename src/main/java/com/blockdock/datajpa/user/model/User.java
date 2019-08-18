@@ -1,4 +1,4 @@
-package com.deswaef.spring.examples.datajpa.user.model;
+package com.blockdock.datajpa.user.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

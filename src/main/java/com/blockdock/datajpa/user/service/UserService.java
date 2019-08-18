@@ -1,8 +1,9 @@
-package com.deswaef.spring.examples.datajpa.user.service;
+package com.blockdock.datajpa.user.service;
 
 import com.blockdock.Interface.UserInterface;
-import com.deswaef.spring.examples.datajpa.user.model.User;
-import com.deswaef.spring.examples.datajpa.user.repository.UserRepository;
+import com.blockdock.datajpa.user.model.User;
+import com.blockdock.datajpa.user.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ public class UserService implements UserInterface{
         return userRepository.findAll();
     }
 
+<<<<<<< HEAD:src/main/java/com/deswaef/spring/examples/datajpa/user/service/UserService.java
     public Boolean validateUser(String email, String password) {
     	User user = userRepository.findByEmailAndPassword(email, password);
     	if(user != null) {
@@ -35,6 +37,22 @@ public class UserService implements UserInterface{
     	} else {
 			return false;
 		}
+=======
+
+    public String validateUser(String email, String password) {
+    	String responseMessage = null;	
+    	User user = userRepository.findByEmailAndPassword(email, password);
+    	String userEmail = user.getEmail().trim();
+    	String userPassword = user.getPassword().trim();
+    	
+    	if(userEmail.equals(email) && userPassword.equals(password)) {
+    		responseMessage = user.getName();
+    	}else {
+    		responseMessage = "0";
+    	}
+    	
+    	return responseMessage;
+>>>>>>> e172a6797dc4618fee2c3dd32588455f7f979f61:src/main/java/com/blockdock/datajpa/user/service/UserService.java
     }
 
 	@Override
