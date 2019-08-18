@@ -1,7 +1,8 @@
-//package com.deswaef.spring.examples.datajpa.user.producer;
+package com.blockdock.datajpa.user.producer;
+//package com.blockdock.datajpa.user.producer;
 //
-//import com.deswaef.spring.examples.datajpa.user.model.User;
-//import com.deswaef.spring.examples.datajpa.user.service.UserService;
+//import com.blockdock.datajpa.user.model.User;
+//import com.blockdock.datajpa.user.service.UserService;
 //import org.apache.commons.logging.Log;
 //import org.apache.commons.logging.LogFactory;
 //import org.springframework.beans.factory.annotation.Autowired;

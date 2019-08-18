@@ -1,13 +1,14 @@
-package com.deswaef.spring.examples.datajpa;
+package com.blockdock.datajpa;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.deswaef.spring.examples.datajpa.user.model.User;
-import com.deswaef.spring.examples.datajpa.user.service.UserService;
+import com.blockdock.datajpa.user.model.User;
+import com.blockdock.datajpa.user.service.UserService;
 
 @RestController
 @RequestMapping("/api")
