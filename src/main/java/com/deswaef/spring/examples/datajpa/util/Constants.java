@@ -7,6 +7,5 @@ public final class Constants {
 	public static final String FAILED_REGISTER_STATUS = "001";
 	public static final String FAILED_LOGIN_STATUS = "002";
 	
-
 	public static final String USER_ALREADY_REGISTERD = "300";
 }

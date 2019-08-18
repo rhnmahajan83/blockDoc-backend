@@ -18,12 +18,8 @@ public class UserService implements UserInterface{
     @Autowired
     private UserRepository userRepository;
 
-    @Transactional(readOnly = true)
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
 
-<<<<<<< HEAD:src/main/java/com/deswaef/spring/examples/datajpa/user/service/UserService.java
+
     public Boolean validateUser(String email, String password) {
     	User user = userRepository.findByEmailAndPassword(email, password);
     	if(user != null) {
@@ -36,26 +32,10 @@ public class UserService implements UserInterface{
         	}
     	} else {
 			return false;
-		}
-=======
-
-    public String validateUser(String email, String password) {
-    	String responseMessage = null;	
-    	User user = userRepository.findByEmailAndPassword(email, password);
-    	String userEmail = user.getEmail().trim();
-    	String userPassword = user.getPassword().trim();
-    	
-    	if(userEmail.equals(email) && userPassword.equals(password)) {
-    		responseMessage = user.getName();
-    	}else {
-    		responseMessage = "0";
     	}
-    	
-    	return responseMessage;
->>>>>>> e172a6797dc4618fee2c3dd32588455f7f979f61:src/main/java/com/blockdock/datajpa/user/service/UserService.java
-    }
+	}
 
-	@Override
+    @Override
 	public Boolean registerUser(User user) {
 		if(userRepository.save(user) != null) {
 			return true;
@@ -69,6 +49,11 @@ public class UserService implements UserInterface{
 		}
 		return false;
 	}
-    
-    
+
+	@Override
+	public List<User> getAllUsers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

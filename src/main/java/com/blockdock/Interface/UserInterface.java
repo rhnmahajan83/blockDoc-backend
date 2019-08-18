@@ -2,7 +2,7 @@ package com.blockdock.Interface;
 
 import java.util.List;
 
-import com.deswaef.spring.examples.datajpa.user.model.User;
+import com.blockdock.datajpa.user.model.User;
 
 public interface UserInterface {
 	
