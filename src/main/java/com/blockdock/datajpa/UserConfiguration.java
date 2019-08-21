@@ -16,17 +16,24 @@
 
 package com.blockdock.datajpa;
 
+import java.io.File;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan
+@SpringBootApplication
+@ComponentScan({"com.blockdock.datajpa","com.blockdock"})
+@EntityScan("com.blockdock")
 public class UserConfiguration {
 
 	public static void main(String[] args) throws Exception {
+		new File(RestApiController.uploadDirectory).mkdir();
         SpringApplication.run(UserConfiguration.class, args);
     }
 }
