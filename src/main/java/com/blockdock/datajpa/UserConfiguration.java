@@ -28,7 +28,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableAutoConfiguration
 @SpringBootApplication
-@ComponentScan({"com.blockdock.datajpa","com.blockdock"})
+@ComponentScan
 @EntityScan("com.blockdock")
 public class UserConfiguration {
 
