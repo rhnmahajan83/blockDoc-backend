@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,8 +26,12 @@ public class RestApiController {
 	@Autowired
 	UserService userService;
 
+	@CrossOrigin
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String validateUser(@RequestBody User user) {
+		if(user== null) {
+			return Constants.FAILED_LOGIN_STATUS;
+		}
 		if(userService.validateUser(user.getEmail(), user.getPassword())) {
 			return Constants.SUCCESSFUL_LOGIN_STATUS;
 		}else{
@@ -34,6 +39,7 @@ public class RestApiController {
 		}
 	}
 
+	@CrossOrigin
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String registerUser(@RequestBody User user) {	
 		if(userService.getUserByEmail(user.getEmail())) {
