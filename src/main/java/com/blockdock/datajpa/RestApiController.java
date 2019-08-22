@@ -48,12 +48,8 @@ public class RestApiController {
 	
 
 	
-	@RequestMapping("/")
-	public String UploadPage(Model model) {
-		return "uploadview";
-	}
 	
-	@RequestMapping("/upload")
+	@RequestMapping("/uploadFile")
 	public String Upload(Model model, @RequestParam("files") MultipartFile[] files) {
 		StringBuilder fileNames = new StringBuilder();
 		for(MultipartFile file : files) {
