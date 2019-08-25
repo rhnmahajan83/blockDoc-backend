@@ -1,14 +1,16 @@
 package com.blockdock.datajpa.user.service;
 
-import com.blockdock.Interface.UserInterface;
-import com.blockdock.datajpa.user.model.User;
-import com.blockdock.datajpa.user.repository.UserRepository;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.blockdock.Interface.UserInterface;
+import com.blockdock.datajpa.user.model.File;
+import com.blockdock.datajpa.user.model.User;
+import com.blockdock.datajpa.user.repository.BaseRepository;
+import com.blockdock.datajpa.user.repository.UserRepository;
 
 
 @Service
@@ -17,8 +19,16 @@ public class UserService implements UserInterface{
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private BaseRepository baseRepository;
 
 
+    @Transactional
+	public Object add(File fileDetails) {
+    	File fd= (File) baseRepository.add(fileDetails);
+		return fd;
+	}
 
     public Boolean validateUser(String email, String password) {
     	User user = userRepository.findByEmailAndPassword(email, password);
