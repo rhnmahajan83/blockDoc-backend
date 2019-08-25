@@ -78,6 +78,7 @@ public class RestApiController {
 		}
 		
 		try {
+			System.out.println(fileDetails);
 			File file= objMapper.readValue(fileDetails, File.class);
 			userService.add(file);
 		} catch (JsonParseException e) {
