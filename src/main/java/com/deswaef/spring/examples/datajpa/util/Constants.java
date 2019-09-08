@@ -15,4 +15,5 @@ public final class Constants {
 	
 	// File Related Constants
 	public static final String FILE_DIRECTORY = System.getProperty("user.dir")+"/uploads";
+
 }

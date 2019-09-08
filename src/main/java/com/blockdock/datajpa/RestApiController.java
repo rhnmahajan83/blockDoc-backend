@@ -33,11 +33,8 @@ public class RestApiController {
 	public ResponseStatus validateUser(@RequestBody User user) {
 		if(user== null) {
 			return new ResponseStatus(Constants.LOGIN_FAILED,"Login Failed");
-		}
-		if(userService.validateUser(user.getEmail(), user.getPassword())) {
-			return new ResponseStatus(Constants.LOGIN_SUCCESSFUL,"Login Successful");
-		}else{
-			return new ResponseStatus(Constants.LOGIN_FAILED,"Login Failed: Wrong Username or Password");
+		}else {
+			return userService.validateUser(user.getEmail(), user.getPassword());
 		}
 	}
 
