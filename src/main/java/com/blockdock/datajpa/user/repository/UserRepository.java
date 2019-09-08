@@ -17,4 +17,3 @@ public interface UserRepository extends JpaRepository<User, Long>{
     User findByPhoneAndPassword(@Param("phone") String email, @Param("password") String password);
 
 }
-s

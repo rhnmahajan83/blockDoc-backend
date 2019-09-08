@@ -34,7 +34,14 @@ public class RestApiController {
 		if(user== null) {
 			return new ResponseStatus(Constants.LOGIN_FAILED,"Login Failed");
 		}else {
-			return userService.validateUser(user.getEmail(), user.getPassword());
+			 String userName = userService.validateUser(user.getEmail(), user.getPassword());
+			 if(userName != "0" && userName != "1") {
+				 return new ResponseStatus(Constants.LOGIN_SUCCESSFUL, userName);
+			 }else if(userName == "1"){
+				 return new ResponseStatus(Constants.LOGIN_FAILED, "User not found");
+			 }else {
+				 return new ResponseStatus(Constants.LOGIN_FAILED, "Password Incorrect");
+			 }
 		}
 	}
 
