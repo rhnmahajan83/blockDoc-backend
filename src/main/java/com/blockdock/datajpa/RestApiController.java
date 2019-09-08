@@ -33,9 +33,14 @@ public class RestApiController {
 	public ResponseStatus validateUser(@RequestBody User user) {
 		if(user== null) {
 			return new ResponseStatus(Constants.LOGIN_FAILED,"Login Failed");
-		}else {
-			return userService.validateUser(user.getEmail(), user.getPassword());
 		}
+			
+		if(userService.validateUser(user.getEmail(), user.getPassword())) {
+			new ResponseStatus(Constants.LOGIN_SUCCESSFUL,"Login Success");
+		}else {
+			return new ResponseStatus(Constants.LOGIN_FAILED,"Login Failed");
+		}
+		return null;
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
