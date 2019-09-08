@@ -20,17 +20,24 @@ public class UserService implements UserInterface{
     @Autowired
     private UserRepository userRepository;
 
-    public Boolean validateUser(String email, String password) {
+    public String validateUser(String email, String password) {
     	User emailUser = userRepository.findByEmail(email);
+    	
+    	String response = null;
     	
     	if(emailUser != null) {
     		if((emailUser.getEmail().equals(email) && emailUser.getPassword().equals(password))) {
-        		return true;
+        		response = emailUser.getName();
         	}
-    	} else {
-			return false;
+    		else {
+    			response = "0";
+    		}
+    	}else {
+    		response = "1";
     	}
-    	return  false;
+    	
+    	
+		return response;
 	}
 
     @Override
