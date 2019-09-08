@@ -27,7 +27,7 @@ public class File {
 	
 	@Basic
     @Column
-	private int fileSize;
+	private Long fileSize;
 	
 	@Basic
     @Column
@@ -36,6 +36,45 @@ public class File {
 	@Basic
     @Column
 	private Long receiverId;
+	
+	@Basic
+    @Column
+	private Long ownerId;
+	
+	@Basic
+    @Column
+	private String fileURI;
+
+	public Long getOwnerId() {
+		return ownerId;
+	}
+	
+    public File() {
+    }
+	public File(int id, String fileName, String fileType, Long fileSize, Long senderId, Long receiverId, Long ownerId,
+			String fileURI) {
+		super();
+		this.id = id;
+		this.fileName = fileName;
+		this.fileType = fileType;
+		this.fileSize = fileSize;
+		this.senderId = senderId;
+		this.receiverId = receiverId;
+		this.ownerId = ownerId;
+		this.fileURI = fileURI;
+	}
+
+	public void setOwnerId(Long ownerId) {
+		this.ownerId = ownerId;
+	}
+
+	public String getFileURI() {
+		return fileURI;
+	}
+
+	public void setFileURI(String fileURI) {
+		this.fileURI = fileURI;
+	}
 
 	public int getId() {
 		return id;
@@ -61,11 +100,11 @@ public class File {
 		this.fileType = fileType;
 	}
 
-	public int getFileSize() {
+	public Long getFileSize() {
 		return fileSize;
 	}
 
-	public void setFileSize(int fileSize) {
+	public void setFileSize(Long fileSize) {
 		this.fileSize = fileSize;
 	}
 

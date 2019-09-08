@@ -22,18 +22,26 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+
+import com.blockdock.datajpa.user.property.FileStorageProperties;
+import com.blockdock.datajpa.user.service.FileService;
+import com.deswaef.spring.examples.datajpa.util.Constants;
 
 @Configuration
 @EnableAutoConfiguration
 @SpringBootApplication
 @ComponentScan
-@EntityScan("com.blockdock")
+@EnableConfigurationProperties({
+    FileStorageProperties.class
+})
+@EntityScan("com.blockdock")	
 public class UserConfiguration {
 
 	public static void main(String[] args) throws Exception {
-		new File(RestApiController.uploadDirectory).mkdir();
+		new File(Constants.FILE_DIRECTORY).mkdir();
         SpringApplication.run(UserConfiguration.class, args);
     }
 }

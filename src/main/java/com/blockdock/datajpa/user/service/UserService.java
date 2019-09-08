@@ -19,16 +19,6 @@ public class UserService implements UserInterface{
 
     @Autowired
     private UserRepository userRepository;
-    
-    @Autowired
-    private BaseRepository baseRepository;
-
-
-    @Transactional
-	public Object add(File fileDetails) {
-    	File fd= (File) baseRepository.add(fileDetails);
-		return fd;
-	}
 
     public Boolean validateUser(String email, String password) {
     	User user = userRepository.findByEmailAndPassword(email, password);
@@ -53,16 +43,27 @@ public class UserService implements UserInterface{
 		return false;
 	}
 	
-	public Boolean getUserByEmail(String email) {	
-		if(userRepository.findByEmail(email) != null) {
-			return true;
+    @Override
+	public User getUserByEmail(String email) {	
+    	User user = userRepository.findByEmail(email);
+		if(user != null) {
+			return user;
 		}
-		return false;
+		return null;
 	}
 
 	@Override
 	public List<User> getAllUsers() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUserById(Long id) {
+		User user = userRepository.findById(id);
+		if(user != null) {
+			return user;
+		}
 		return null;
 	}
 
