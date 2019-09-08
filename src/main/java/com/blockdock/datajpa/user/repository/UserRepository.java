@@ -8,6 +8,8 @@ import com.blockdock.datajpa.user.model.User;
 
 
 public interface UserRepository extends JpaRepository<User, Long>{
+
+    User findById(Long Id);
     
     User findByEmail(@Param("email") String email);
  
@@ -15,3 +17,4 @@ public interface UserRepository extends JpaRepository<User, Long>{
     User findByPhoneAndPassword(@Param("phone") String email, @Param("password") String password);
 
 }
+s

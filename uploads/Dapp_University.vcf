@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION;TYPE=WORK:3.0
+FN;CHARSET=UTF-8:Dapp University
+N;CHARSET=UTF-8:Dapp University;;;;
+PROFILE:VCARD
+ADR;CHARSET=UTF-8:;;1921 Greenwood Ave;Nashville;TN;37206-2400;USA
+EMAIL:dappuniversity@gmail.com
+ORG;CHARSET=UTF-8:Dapp University
+URL:http://dappuniversity.com
+END:VCARD

@@ -7,6 +7,8 @@ import com.blockdock.datajpa.user.model.User;
 public interface UserInterface {
 	
 	 public List<User> getAllUsers();
-	 public String validateUser(String email, String password);
+	 public Boolean validateUser(String email, String password);
 	 public Boolean registerUser(User user);
+	 public User getUserByEmail(String email);
+	 public User getUserById(Long id);
 }
