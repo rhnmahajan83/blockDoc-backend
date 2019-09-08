@@ -20,19 +20,19 @@ public class UserService implements UserInterface{
 
 
 
-    public Boolean validateUser(String email, String password) {
-    	User user = userRepository.findByEmailAndPassword(email, password);
-    	if(user != null) {
-        	String userEmail = user.getEmail().trim();
-        	String userPassword = user.getPassword().trim();
-    		if(userEmail.equals(email) && userPassword.equals(password)) {
-        		return true;
-        	}else {
-        		return false;
+    public String validateUser(String email, String password) {
+    	User emailUser = userRepository.findByEmail(email);
+    	
+    	String response = null;
+    	
+    	if(emailUser != null) {
+    		if((emailUser.getEmail().equals(email) && emailUser.getPassword().equals(password))) {
+        		response = emailUser.getName();
         	}
     	} else {
-			return false;
+    		response = "0";
     	}
+		return response;
 	}
 
     @Override

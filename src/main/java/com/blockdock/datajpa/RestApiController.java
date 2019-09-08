@@ -31,11 +31,8 @@ public class RestApiController {
 	public String validateUser(@RequestBody User user) {
 		if(user== null) {
 			return Constants.FAILED_LOGIN_STATUS;
-		}
-		if(userService.validateUser(user.getEmail(), user.getPassword())) {
-			return Constants.SUCCESSFUL_LOGIN_STATUS;
-		}else{
-			return Constants.FAILED_LOGIN_STATUS;
+		}else {
+			return userService.validateUser(user.getEmail(), user.getPassword());
 		}
 	}
 
