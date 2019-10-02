@@ -8,10 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="File_Details")
 //@SequenceGenerator(name = "seq", initialValue = 1, allocationSize = 100)
-public class File {
+public class FileDetails{
 	
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Id
@@ -49,9 +50,9 @@ public class File {
 		return ownerId;
 	}
 	
-    public File() {
+    public FileDetails() {
     }
-	public File(int id, String fileName, String fileType, Long fileSize, Long senderId, Long receiverId, Long ownerId,
+	public FileDetails(int id, String fileName, String fileType, Long fileSize, Long senderId, Long receiverId, Long ownerId,
 			String fileURI) {
 		super();
 		this.id = id;

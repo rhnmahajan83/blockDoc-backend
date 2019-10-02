@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.blockdock.datajpa.user.model.File;
+import com.blockdock.datajpa.user.model.FileDetails;
+import com.blockdock.datajpa.user.model.User;
 import com.blockdock.datajpa.user.payload.ResponseStatus;
 import com.blockdock.datajpa.user.payload.UploadFileResponse;
 import com.blockdock.datajpa.user.service.FileService;
@@ -42,12 +43,12 @@ public class FileController {
     
     @PostMapping("/uploadFile")
     public ResponseStatus uploadFile(@RequestParam("file") MultipartFile file,  @RequestParam("filedetails") String fileDetails) {
-    	File newFile = null ;
+    	FileDetails newFile = null ;
     	String fileName = fileStorageService.storeFile(file);
     	if(fileName != "") {
     		ObjectMapper objMapper = new ObjectMapper();
             try {
-    			 newFile= objMapper.readValue(fileDetails, File.class);
+    			 newFile= objMapper.readValue(fileDetails, FileDetails.class);
     		} catch (JsonParseException e) {
     			e.printStackTrace();
     		} catch (JsonMappingException e) {
@@ -85,7 +86,7 @@ public class FileController {
     @GetMapping("/downloadFile/{fileId:.+}")
     public ResponseEntity<Resource> downloadFile(@PathVariable int fileId, HttpServletRequest request) {
     	
-    	File  file = fileService.getFileById(fileId);
+    	FileDetails  file = fileService.getFileById(fileId);
     	
     	if(file != null) {
     		// Load file as Resource
@@ -111,5 +112,22 @@ public class FileController {
     	}
 		return null;
     }
+    
+//    @GetMapping("/deletefile/{id}")
+//    public String deleteFile(@PathVariable("id") File id, HttpServletRequest request) {
+//    	fileService.deleteFile(id);
+//    	return " ";
+//    	
+//    }
+    
+    
+    @RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
+	public ResponseStatus deletefile(@RequestBody FileDetails file) {
+    	if(fileService.deleteFile(file)) {
+    	return new ResponseStatus(Constants.FILE_DELETED_SUCCESSFULLY,"File deleted successfully");
+    	}else {
+    		return new ResponseStatus(Constants.FILE_DOES_NOT_EXIST,"Cant delete file, check if it exists");	
+    	}
+    	}
     
 }

@@ -12,6 +12,7 @@ public final class Constants {
 	
 	public static final int USER_ALREADY_REGISTERD = 301;
 	public static final int FILE_DOES_NOT_EXIST = 302;
+	public static final int FILE_DELETED_SUCCESSFULLY = 204;
 	
 	// File Related Constants
 	public static final String FILE_DIRECTORY = System.getProperty("user.dir")+"/uploads";
