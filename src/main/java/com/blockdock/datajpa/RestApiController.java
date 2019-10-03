@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.blockdock.datajpa.user.model.User;
-import com.blockdock.datajpa.user.model.File;
+import com.blockdock.datajpa.user.model.FileDetails;
 import com.blockdock.datajpa.user.payload.ResponseStatus;
 import com.blockdock.datajpa.user.service.FileService;
 import com.blockdock.datajpa.user.service.UserService;
@@ -58,10 +58,10 @@ public class RestApiController {
 	}
 	
 	@RequestMapping(value = "/getFiles", method = RequestMethod.POST)
-	public List<File> getUserFiles(@RequestBody User user) {	
+	public List<FileDetails> getUserFiles(@RequestBody User user) {	
 		User fileUser = userService.getUserById(user.getId());
 		if(fileUser !=null) { 
-			List<File> files = fileService.getAllUserFiles(fileUser.getId());
+			List<FileDetails> files = fileService.getAllUserFiles(fileUser.getId());
 			return files;
 		}else {
 			return null;
