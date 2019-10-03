@@ -16,45 +16,13 @@ public class BaseRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-//	@Autowired
-//	SessionFactory sessionFactory;
-	
 	private static String fileName;
 	private static String success= "File deleted successfully";
 	private static String failure= "No such file exists";
 	
-//	protected Session currentSession() {
-//		return sessionFactory.getCurrentSession();
-//	}
 	
 	@Transactional
 	public Object add(Object obj) {
 		return entityManager.merge(obj);
 	}
-	
-	
-//	@Transactional
-//	public void delete(Long id) {
-//		
-//		currentSession().delete(id);
-//		/*//File file = entityManager.find(File.class, id);
-//		
-//		//Call remove method to remove the entity
-//	      //if(file != null){
-//	    	 // entityManager.delete(file);
-//	    	  return success;
-//	      
-//	      }
-//	      
-//	      else {
-//	    	  return failure;
-//	      }*/
-//	      
-//	      
-//	}
-			
-      
-      
-
 }

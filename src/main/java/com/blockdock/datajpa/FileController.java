@@ -113,13 +113,6 @@ public class FileController {
 		return null;
     }
     
-//    @GetMapping("/deletefile/{id}")
-//    public String deleteFile(@PathVariable("id") File id, HttpServletRequest request) {
-//    	fileService.deleteFile(id);
-//    	return " ";
-//    	
-//    }
-    
     
     @RequestMapping(value = "/deleteFile", method = RequestMethod.POST)
 	public ResponseStatus deletefile(@RequestBody FileDetails file) {
