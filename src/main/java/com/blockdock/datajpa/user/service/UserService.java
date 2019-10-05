@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.blockdock.Interface.UserInterface;
-import com.blockdock.datajpa.user.model.File;
+import com.blockdock.datajpa.user.model.FileDetails;
 import com.blockdock.datajpa.user.model.User;
 import com.blockdock.datajpa.user.repository.BaseRepository;
 import com.blockdock.datajpa.user.repository.UserRepository;

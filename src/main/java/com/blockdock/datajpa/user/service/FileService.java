@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.io.File;
 import com.blockdock.Interface.FileInterface;
-import com.blockdock.datajpa.user.model.File;
+import com.blockdock.datajpa.user.model.FileDetails;
 import com.blockdock.datajpa.user.repository.FileRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.deswaef.spring.examples.datajpa.util.Constants;
 
 @Service
 @Transactional
@@ -19,27 +19,27 @@ public class FileService implements FileInterface {
 	private FileRepository fileRepository;
 	
 	@Override
-	public List<File> getAllUserFiles(Long userId) {
+	public List<FileDetails> getAllUserFiles(Long userId) {
 		return fileRepository.findAllByOwnerId(userId);
 	}
 
 	@Override
-	public List<File> getAllSentFilesForUser(Long senderId) {
+	public List<FileDetails> getAllSentFilesForUser(Long senderId) {
 		return fileRepository.findAllBySenderId(senderId);
 	}
 
 	@Override
-	public List<File> getAllReceviedFilesForUser(Long receiverId) {
+	public List<FileDetails> getAllReceviedFilesForUser(Long receiverId) {
 		return fileRepository.findAllByReceiverId(receiverId);
 	}
 
 	@Override
-	public File getFileById(int id) {
+	public FileDetails getFileById(int id) {
 		return fileRepository.findById(id);
 	}
 
 	@Override
-	public Boolean saveFile(File file) {
+	public Boolean saveFile(FileDetails file) {
 		if(fileRepository.save(file) != null) {
 			return true;
 		}
@@ -47,14 +47,15 @@ public class FileService implements FileInterface {
 	}
 
 	@Override
-	public Boolean deleteFile(File file) {
+	public Boolean deleteFile(FileDetails file) {
 		try {
-			//Delete File details
+			String ftdName = Constants.FILE_DIRECTORY + "/" + file.getFileName();
+			System.out.println(file.getFileName());
+			System.out.println(Constants.FILE_DIRECTORY);
+			System.out.println(ftdName);
+			File fileToDelete = new File(ftdName);
+			fileToDelete.delete();
 			fileRepository.delete(file);
-			
-			// Delete File
-			//Path fileToDeletePath = Paths.get(Constants.FILE_DIRECTORY);
-			//Files.delete(fileToDeletePath);
 			return true;
 		}catch (IllegalArgumentException e) {
 			e.printStackTrace();
@@ -63,7 +64,7 @@ public class FileService implements FileInterface {
 	}
 
 	@Override
-	public Boolean sendFile(File file) {
+	public Boolean sendFile(FileDetails file) {
 		// TODO Auto-generated method stub
 		return null;
 	}

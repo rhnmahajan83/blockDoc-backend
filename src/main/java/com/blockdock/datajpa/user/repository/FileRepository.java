@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.blockdock.datajpa.user.model.File;
+import com.blockdock.datajpa.user.model.FileDetails;
 
-public interface FileRepository extends JpaRepository<File, Long> {
-	File findById(@Param("id") int id);
-	List<File> findAllBySenderId(@Param("senderId") Long senderId);
-	List<File> findAllByReceiverId(@Param("receiverId") Long receiverId);
-	List<File> findAllByOwnerId(@Param("ownerId") Long ownerId);
-	List<File> findByFileName(@Param("fileName") String fileName);
+public interface FileRepository extends JpaRepository<FileDetails, Long> {
+	FileDetails findById(@Param("id") int id);
+	List<FileDetails> findAllBySenderId(@Param("senderId") Long senderId);
+	List<FileDetails> findAllByReceiverId(@Param("receiverId") Long receiverId);
+	List<FileDetails> findAllByOwnerId(@Param("ownerId") Long ownerId);
+	List<FileDetails> findByFileName(@Param("fileName") String fileName);
 }
